@@ -17,6 +17,11 @@ To clear images:
 ```
 docker rmi -f $(docker images -a -q)
 ```
+or
+```
+docker rm -v $(docker ps -a -q -f status=exited) 2>&1
+docker rmi $(docker images -f "dangling=true" -q) 2>&1
+```
 
 To clear volumes:
 
